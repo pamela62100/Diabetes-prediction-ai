@@ -71,17 +71,18 @@ scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X) 
 
 
+
 X_train, X_test, y_train, y_test = train_test_split(
     X_scaled, y, test_size=0.2, random_state=42
 )
-# MODEL 1:Logistic Regression
+
 log_model = LogisticRegression(max_iter=1000)
 log_model.fit(X_train, y_train)
 log_pred = log_model.predict(X_test)
 log_acc = accuracy_score(y_test, log_pred)
 print("\nLogistic Regression Accuracy:", log_acc)
 
-#MODEL 2: Decision Tree
+
 
 tree_model = DecisionTreeClassifier()
 tree_model.fit(X_train, y_train)
@@ -89,7 +90,7 @@ tree_pred = tree_model.predict(X_test)
 tree_acc = accuracy_score(y_test, tree_pred)
 print("Decision Tree Accuracy:", tree_acc)
 
-#MODEL 3: Random Forest
+
 rf_model = RandomForestClassifier(n_estimators=100)
 rf_model.fit(X_train, y_train)
 rf_pred = rf_model.predict(X_test)
@@ -99,9 +100,10 @@ print("Random Forest Accuracy:", rf_acc)
 print("\nConfusion Matrix (Random Forest):")
 cm = confusion_matrix(y_test, rf_pred)
 print(cm)
-
+# CLASSIFICATION REPORT
 print("\nClassification Report:")
 print(classification_report(y_test, rf_pred))
+
 
 
 print("\nEnter patient information:")
